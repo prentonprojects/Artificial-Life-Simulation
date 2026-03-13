@@ -3,18 +3,26 @@
 Here, organisms evolve through food competition, reproduction, mutation, and survival.
 
 ## Current Features
-- Organisms are autonomous
-- Food based survival systems
-- Genetic traits
-- Mutations are shared across generations
+- Prey and Predator Ecosystems
+- Terrain zones with movement changes
+- Food spawning based on biome
+- Genetic traits and mutation
 - Reproduction and death
-- Live statistics
 - Organism inspection panel
+- Population history graph
+- Save and load simulation state
+
+## Controls
+- `Space` pause / resume
+- `R` reset simulation
+- `S` save simulation
+- `L` load simulation
+- `Left Click ` inspect organism
 
 # Ran locally
 ```
 pip install -r requirements.txt
 python app.py
 ```
-Upgrades will probably come sooner than later.
+V3 planned soon.
 
