@@ -1,5 +1,4 @@
 # Artificial Life Simulation
-I decdied to make a small project simulating life in Python:
 
 Here, organisms evolve through food competition, reproduction, mutation, and survival.
 
@@ -18,3 +17,4 @@ pip install -r requirements.txt
 python app.py
 ```
 Upgrades will probably come sooner than later.
+
