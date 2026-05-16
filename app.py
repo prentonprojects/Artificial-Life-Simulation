@@ -2,9 +2,6 @@ import math
 import random
 import pygame
 
-# =========================
-# Config
-# =========================
 WIDTH, HEIGHT = 1200, 800
 FPS = 60
 
@@ -13,15 +10,12 @@ INITIAL_FOOD = 120
 MAX_FOOD = 180
 
 FOOD_ENERGY = 22
-FOOD_SPAWN_CHANCE = 0.18  # per frame chance
+FOOD_SPAWN_CHANCE = 0.18 
 
 BACKGROUND = (18, 18, 24)
 FOOD_COLOR = (80, 220, 120)
 TEXT_COLOR = (230, 230, 230)
 
-# =========================
-# Pygame setup
-# =========================
 pygame.init()
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
 pygame.display.set_caption("Artificial Life Simulation")
@@ -29,18 +23,12 @@ clock = pygame.time.Clock()
 font = pygame.font.SysFont("consolas", 20)
 small_font = pygame.font.SysFont("consolas", 16)
 
-# =========================
-# Helpers
-# =========================
 def clamp(value, low, high):
     return max(low, min(high, value))
 
 def random_position():
     return random.uniform(30, WIDTH - 30), random.uniform(30, HEIGHT - 30)
 
-# =========================
-# Food
-# =========================
 class Food:
     def __init__(self):
         self.x, self.y = random_position()
@@ -49,9 +37,6 @@ class Food:
     def draw(self, surface):
         pygame.draw.circle(surface, FOOD_COLOR, (int(self.x), int(self.y)), self.radius)
 
-# =========================
-# Organism
-# =========================
 class Organism:
     def __init__(self, x=None, y=None, genes=None, generation=1):
         self.x, self.y = (random_position() if x is None or y is None else (x, y))
@@ -206,7 +191,7 @@ class Organism:
         color = self.get_color()
         pygame.draw.circle(surface, color, (int(self.x), int(self.y)), int(self.size))
 
-        # direction indicator
+    
         dx = math.cos(self.direction) * self.size
         dy = math.sin(self.direction) * self.size
         pygame.draw.line(
@@ -250,7 +235,6 @@ class Simulation:
         self.organisms = [o for o in self.organisms if o.alive]
         self.organisms.extend(new_organisms)
 
-        # ensure simulation doesn't die too early
         if len(self.organisms) == 0:
             self.organisms = [Organism() for _ in range(INITIAL_ORGANISMS // 2)]
             self.food.extend(Food() for _ in range(50))
@@ -342,7 +326,6 @@ class Simulation:
 
         self.selected = closest
 
-# Main loop
 def main():
     sim = Simulation()
     running = True
